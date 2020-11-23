@@ -26,11 +26,11 @@ class Login extends Component {
                                 </div>
                                 <div className="row">
                                     <div className="col s8">
-                                        <a href="{% url 'register' %}">Register</a>
+                                        <a href="/">Register</a>
                                     </div>
                                     <div className="col s4">
                                     <div className="right">
-                                        <button className="btn blue waves-effect waves-light pull-s12">Login</button>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
                                     </div>
                                     </div>
                                 </div>

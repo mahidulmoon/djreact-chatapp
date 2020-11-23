@@ -4,7 +4,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from './Navbar';
 import RoutingBody from './RoutingBody';
 import Login from './Login';
+import Chat from './Chat';
 import {BrowserRouter ,Route,Switch} from 'react-router-dom';
+import Register from './Register';
 class Body extends Component {
     render() {
         return (
@@ -22,6 +24,8 @@ class Body extends Component {
                     <BrowserRouter>
                         <Switch>
                             <Route path="/login" exact component={Login} />
+                            <Route path="/register" exact component={Register} />
+                            <Route path="/chat" exact component={Chat} />
                         </Switch>
                     </BrowserRouter>
                 </RoutingBody>
