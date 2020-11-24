@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
-
+import axios from 'axios';
 class Chat extends Component {
+    state = {
+        user:[],
+    }
+    componentDidMount(){
+        axios.get('http://127.0.0.1:8000/user/register/').then(res => this.setState({user:res.data}));
+    }
     render() {
         return (
             <div>
@@ -19,12 +25,14 @@ class Chat extends Component {
                         <div className="card">
                             <div className="collection">
                                 
-                                <a href="{% url 'chat' request.user.id user.id %}" id="user{{ user.id }}" className="collection-item row">
+                                {this.state.user.map(user => (
+                                    <a href="{% url 'chat' request.user.id user.id %}" id="user{{ user.id }}" className="collection-item row">
                                     <img src="https://frontend-1.adjust.com/new-assets/images/site-images/interface/user.svg" alt="" className="col s4"/>
                                     <div className="col s8">
-                                    <span className="title" style={{fontWeight: "bolder"}}>username </span>
+                                    <span className="title" style={{fontWeight: "bolder"}}>{user.username} </span>
                                     </div>
                                 </a>
+                                ))}
                                 
                             </div>
                         </div>
