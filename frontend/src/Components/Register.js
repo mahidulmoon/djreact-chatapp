@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import axios from 'axios';
 class Register extends Component {
     state={
         register:{
@@ -15,6 +15,7 @@ class Register extends Component {
     submitButton = e => {
         e.preventDefault();
         //console.log(this.state.register);
+        axios.post('http://127.0.0.1:8000/user/register/',this.state.register).then(res => alert("Registration success",res.data)).catch(err => alert(err));
     }
 
     render() {

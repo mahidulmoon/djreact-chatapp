@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 
 class Navbar extends Component {
+    state = {
+        islogin:''
+    }
+    componentDidMount(){
+        if(localStorage.getItem('islogin')){
+            this.setState({islogin:localStorage.getItem('islogin')});
+        }
+    }
     render() {
         return (
             <div>
@@ -20,9 +28,9 @@ class Navbar extends Component {
                     <li class="nav-item">
                         <a class="nav-link" href="/register">Register</a>
                     </li>
-                    <li class="nav-item">
+                    {this.state.islogin === 'true' && <li class="nav-item">
                         <a class="nav-link" href="/chat">Chat</a>
-                    </li>
+                    </li>}
                     <li class="nav-item">
                         <a class="nav-link disabled" href="/" tabindex="-1" aria-disabled="true">Disabled</a>
                     </li>

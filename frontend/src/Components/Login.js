@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import axios from 'axios';
 class Login extends Component {
     state ={
         login:{
@@ -15,6 +15,7 @@ class Login extends Component {
     submitButton = e =>{
         e.preventDefault();
         //console.log(this.state.login);
+        axios.post('http://127.0.0.1:8000/user/logintoken/',this.state.login).then(res => {localStorage.setItem('islogin','true');localStorage.setItem('token',res.data.access);alert("Login successfull");window.location.reload();}).catch(err => alert(err));
     }
 
     render() {
