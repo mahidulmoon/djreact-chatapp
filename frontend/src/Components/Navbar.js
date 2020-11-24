@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import jwt_decode from "jwt-decode";
 class Navbar extends Component {
     state = {
         islogin:''
@@ -7,6 +7,9 @@ class Navbar extends Component {
     componentDidMount(){
         if(localStorage.getItem('islogin')){
             this.setState({islogin:localStorage.getItem('islogin')});
+            const userinfo = jwt_decode(localStorage.getItem('token'));
+            //console.log(userinfo.user_id);
+            localStorage.setItem('userid',userinfo.user_id);
         }
     }
     logout(){
