@@ -9,6 +9,10 @@ class Navbar extends Component {
             this.setState({islogin:localStorage.getItem('islogin')});
         }
     }
+    logout(){
+        localStorage.removeItem('islogin');
+        localStorage.removeItem('token');
+    }
     render() {
         return (
             <div>
@@ -22,9 +26,12 @@ class Navbar extends Component {
                     <li class="nav-item active">
                         <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/login">Login</a>
-                    </li>
+                    {(this.state.islogin !== 'true' || this.state.islogin === '') && <li class="nav-item">
+                    <a class="nav-link" href="/login">Login</a>
+                    </li>}
+                    {this.state.islogin === 'true' && <li class="nav-item" onClick={this.logout}>
+                    <a class="nav-link" href="/">Logout</a>
+                    </li>}
                     <li class="nav-item">
                         <a class="nav-link" href="/register">Register</a>
                     </li>

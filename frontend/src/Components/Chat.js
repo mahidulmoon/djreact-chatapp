@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {Redirect} from 'react-router-dom';
 class Chat extends Component {
     state = {
         user:[],
+        islogin:'',
     }
     componentDidMount(){
         axios.get('http://127.0.0.1:8000/user/register/').then(res => this.setState({user:res.data}));
+        if(localStorage.getItem('islogin')){
+            this.setState({islogin:localStorage.getItem('islogin')});
+        }
     }
     render() {
+        if(this.state.islogin !== 'true' || this.state.islogin === ''){
+            <Redirect to="/" />
+        }
         return (
             <div>
                 <nav className="blue lighten-3">
