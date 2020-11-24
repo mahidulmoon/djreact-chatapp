@@ -14,7 +14,7 @@ class Register extends Component {
 
     submitButton = e => {
         e.preventDefault();
-        console.log(this.state.register);
+        //console.log(this.state.register);
     }
 
     render() {
