@@ -1,6 +1,22 @@
 import React, { Component } from 'react';
 
 class Login extends Component {
+    state ={
+        login:{
+            username:'',password:''
+        }
+    }
+
+    inputChange = e =>{
+        const cred = this.state.login;
+        cred[e.target.name] = e.target.value;
+        this.setState({login:cred});
+    }
+    submitButton = e =>{
+        e.preventDefault();
+        //console.log(this.state.login);
+    }
+
     render() {
         return (
             <div className="container">
@@ -14,23 +30,23 @@ class Login extends Component {
                             <form id="login-form" className="form-group">
                                 <div className="row">
                                     <div className="input-field col s12">
-                                        <input name="username" id="id_username" type="text" />
-                                        <label for="id_username">Username</label>
+                                        <input name="username" value={this.state.login.username} onChange={this.inputChange} id="id_username" type="text" />
+                                        <label for="id_username">{this.state.login.username.length > 0 ? this.state.login.username : "Username"}</label>
                                     </div>
                                 </div>
                                 <div className="row">
                                     <div className="input-field col s12">
-                                        <input name="password" id="id_password" type="password" />
-                                        <label for="id_password">Password</label>
+                                        <input name="password" value={this.state.login.password} onChange={this.inputChange} id="id_password" type="password" />
+                                        <label for="id_password">{this.state.login.password.length > 0 ? '' : "Password"}</label>
                                     </div>
                                 </div>
                                 <div className="row">
                                     <div className="col s8">
-                                        <a href="/">Register</a>
+                                        <a href="/register">Register</a>
                                     </div>
                                     <div className="col s4">
                                     <div className="right">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="submit" onClick={this.submitButton} class="btn btn-primary">Submit</button>
                                     </div>
                                     </div>
                                 </div>

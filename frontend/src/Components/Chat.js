@@ -44,7 +44,7 @@ class Chat extends Component {
                                             <input id="id_message" name="message" type="text" placeholder="Type your message.."/>
                                         </div>
                                     </div>
-                                    <div className="col s1" style={{lineHeight: '8'}}>
+                                    <div className="col s1" style={{lineHeight: '80vh'}}>
                                         <button className="btn btn-floating blue lighten-2 waves-effect waves-light"><i className="material-icons">send</i></button>
                                     </div>
                                 </div>
