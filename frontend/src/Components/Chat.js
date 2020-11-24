@@ -33,14 +33,19 @@ class Chat extends Component {
                         <div className="card">
                             <div className="collection">
                                 
-                                {this.state.user.map(user => (
-                                    <a href="{% url 'chat' request.user.id user.id %}" id="user{{ user.id }}" className="collection-item row">
-                                    <img src="https://frontend-1.adjust.com/new-assets/images/site-images/interface/user.svg" alt="" className="col s4"/>
-                                    <div className="col s8">
-                                    <span className="title" style={{fontWeight: "bolder"}}>{user.username} </span>
-                                    </div>
-                                </a>
-                                ))}
+                                {this.state.user.map(user => {
+                                    if(parseInt(user.id) !== parseInt(localStorage.getItem('userid'))){
+                                        return (
+                                            <a href="{% url 'chat' request.user.id user.id %}" id="user{{ user.id }}" className="collection-item row">
+                                            <img src="https://frontend-1.adjust.com/new-assets/images/site-images/interface/user.svg" alt="" className="col s4"/>
+                                            <div className="col s8">
+                                                <span className="title" style={{fontWeight: "bolder"}}>{user.username} </span>
+                                            </div>
+                                        </a>
+                                        );
+                                        
+                                    }
+                                })}
                                 
                             </div>
                         </div>
