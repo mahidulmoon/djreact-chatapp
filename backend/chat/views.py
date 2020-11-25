@@ -11,7 +11,7 @@ class MessageViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated,]
 
     def retrieve(self,request,pk):
-        queryset = Message.objects.filter(sender=request.user,receiver=pk)
+        queryset = Message.objects.filter(sender=pk,receiver=request.user)
         serializer = MessageSerializer(queryset,many=True)
         return Response(serializer.data)
         

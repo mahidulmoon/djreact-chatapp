@@ -1,10 +1,21 @@
 import React, { Component } from 'react';
-
+import axios from 'axios';
 class Message extends Component {
     state = {
         chat:{
             sender: localStorage.getItem('userid'),receiver:localStorage.getItem('receiver'),message:''
         },
+        token: localStorage.getItem('token'),
+        result:[],
+    }
+    componentDidMount(){
+        if(this.state.receiver !== null){
+            axios.get(`http://127.0.0.1:8000/message/list/${this.state.chat.receiver}/`,{
+                headers:{
+                    "Authorization" : `Bearer ${this.state.token}`
+                }
+            }).then(res => this.setState({result:res.data})).catch(err => console.log(err));
+        }
     }
     sendButton =()=>{
         console.log(this.state.chat);
@@ -24,15 +35,19 @@ class Message extends Component {
                                 
 
                                 
-                            <div className="card-panel right" style={{width: '75%', position: 'relative'}}>
-                                <div style={{position: 'absolute', top: 0, left:'3px', fontWeight: 'bolder'}} className="title">You</div>
-                                Hello
-                            </div>
-                                
-                            <div className="card-panel left blue lighten-5" style={{width: '75%', position:'relative'}}>
-                                <div style={{position: 'absolute', top: 0, left:'3px', fontWeight: 'bolder'}} className="title">sender</div>
-                                Hey there
-                            </div>
+                            {this.state.result.map(message => 
+                                <div>
+                                    <div className="card-panel right" style={{width: '75%', position: 'relative'}}>
+                                    <div style={{position: 'absolute', top: 0, left:'3px', fontWeight: 'bolder'}} className="title">You</div>
+                                    {message.message}
+                                </div>
+                                    
+                                <div className="card-panel left blue lighten-5" style={{width: '75%', position:'relative'}}>
+                                    <div style={{position: 'absolute', top: 0, left:'3px', fontWeight: 'bolder'}} className="title">sender</div>
+                                    {message.sender}
+                                </div>
+                                </div>
+                            )}
 
 
                             </div>
