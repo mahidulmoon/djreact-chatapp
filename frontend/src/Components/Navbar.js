@@ -15,6 +15,7 @@ class Navbar extends Component {
     logout(){
         localStorage.removeItem('islogin');
         localStorage.removeItem('token');
+        localStorage.removeItem('userid');
     }
     render() {
         return (

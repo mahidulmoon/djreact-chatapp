@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import {Redirect} from 'react-router-dom';
+import Message from './Message';
 class Chat extends Component {
     state = {
         user:[],
@@ -50,28 +51,9 @@ class Chat extends Component {
                             </div>
                         </div>
                         </div>
-                        <div className="col s9">
-                            <div className="card">
-                            <div id="board" className="section grey lighten-3" style={{height: '68vh', padding: 5,overflow:'scroll'}}>
-                                
+                        
+                        <Message />
 
-                                <p>Message</p>
-                            </div>
-                            <form id="chat-box" className="form-group {% block hide %}hide{% endblock %}" method="post">
-                                
-                                <div className="row">
-                                    <div className="col s11">
-                                        <div className="input-field">
-                                            <input id="id_message" name="message" type="text" placeholder="Type your message.."/>
-                                        </div>
-                                    </div>
-                                    <div className="col s1" style={{lineHeight: '80vh'}}>
-                                        <button className="btn btn-floating blue lighten-2 waves-effect waves-light"><i className="material-icons">send</i></button>
-                                    </div>
-                                </div>
-                            </form>
-                            </div>
-                        </div>
                     </div>
                     </div>
             </div>
