@@ -26,6 +26,7 @@ class Body extends Component {
                             <Route path="/login" exact component={Login} />
                             <Route path="/register" exact component={Register} />
                             <Route path="/chat" exact component={Chat} />
+                            <Route path="/chat/:id" exact component={Chat} />
                         </Switch>
                     </BrowserRouter>
                 </RoutingBody>

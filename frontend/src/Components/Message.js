@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class Message extends Component {
     state = {
         chat:{
-            sender: localStorage.getItem('userid'),receiver:'',message:''
+            sender: localStorage.getItem('userid'),receiver:localStorage.getItem('receiver'),message:''
         },
     }
     sendButton =()=>{

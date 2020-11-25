@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {Redirect} from 'react-router-dom';
+import {Redirect,Link} from 'react-router-dom';
 import Message from './Message';
 class Chat extends Component {
     state = {
@@ -21,7 +21,7 @@ class Chat extends Component {
             <div>
                 <nav className="blue lighten-3">
                     <div className="nav-wrapper container">
-                    <a href="/" className="brand-logo">Chat</a>
+                    <a className="brand-logo">Chat</a>
                     <ul id="nav-mobile" className="right hide-on-med-and-down">
                         <li><a href="/">username</a></li>
                         <li><a href="/"><i className="material-icons">power_settings_new</i></a></li>
@@ -37,12 +37,12 @@ class Chat extends Component {
                                 {this.state.user.map(user => {
                                     if(parseInt(user.id) !== parseInt(localStorage.getItem('userid'))){
                                         return (
-                                            <a href="{% url 'chat' request.user.id user.id %}" id="user{{ user.id }}" className="collection-item row">
+                                            <Link onClick={()=> {localStorage.setItem('receiver',user.id);window.location.reload();}} className="collection-item row">
                                             <img src="https://frontend-1.adjust.com/new-assets/images/site-images/interface/user.svg" alt="" className="col s4"/>
                                             <div className="col s8">
                                                 <span className="title" style={{fontWeight: "bolder"}}>{user.username} </span>
                                             </div>
-                                        </a>
+                                        </Link>
                                         );
                                         
                                     }
@@ -52,7 +52,7 @@ class Chat extends Component {
                         </div>
                         </div>
                         
-                        <Message />
+                        <Message/>
 
                     </div>
                     </div>
