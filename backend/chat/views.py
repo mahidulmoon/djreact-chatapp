@@ -8,6 +8,7 @@ from rest_framework.response import Response
 
 
 class MessageViewSet(viewsets.ModelViewSet):
+    permission_classes = [IsAuthenticated,]
 
     def retrieve(self,request,pk):
         queryset = Message.objects.filter(sender=pk)
