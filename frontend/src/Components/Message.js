@@ -1,6 +1,21 @@
 import React, { Component } from 'react';
 
 class Message extends Component {
+    state = {
+        chat:{
+            sender: localStorage.getItem('userid'),receiver:'',message:''
+        },
+    }
+    sendButton =()=>{
+        console.log(this.state.chat);
+    }
+    inputChange = e =>{
+        const cred = this.state.chat;
+        cred[e.target.name] = e.target.value;
+        this.setState({chat:cred});
+    }
+    
+      
     render() {
         return (
             <div className="col s9">
@@ -26,11 +41,11 @@ class Message extends Component {
                                 <div className="row">
                                     <div className="col s11">
                                         <div className="input-field">
-                                            <input id="id_message" name="message" type="text" placeholder="Type your message.." />
+                                            <input id="id_message" name="message" onChange={this.inputChange} type="text" placeholder="Type your message.." />
                                         </div>
                                     </div>
                                     <div className="col s1" style={{lineHeight: '80px'}}>
-                                        <button type="button" class="btn btn-primary">Send</button>
+                                        <button type="button" onClick={this.sendButton} class="btn btn-primary">Send</button>
                                     </div>
                                 </div>
                             </form>
