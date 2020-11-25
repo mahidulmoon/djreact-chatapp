@@ -9,6 +9,9 @@ class Message extends Component {
         result:[],
     }
     componentDidMount(){
+        setInterval(this.getData(),1000);
+    }
+    getData(){
         if(this.state.receiver !== null){
             axios.get(`http://127.0.0.1:8000/message/list/${this.state.chat.receiver}/`,{
                 headers:{
@@ -18,7 +21,12 @@ class Message extends Component {
         }
     }
     sendButton =()=>{
-        console.log(this.state.chat);
+        //console.log(this.state.chat);
+        axios.post('http://127.0.0.1:8000/message/list/',this.state.chat,{
+            headers:{
+                "Authorization" : `Bearer ${this.state.token}`
+            }
+        }).then(res => console.log(res.data)).catch(err=>alert(err));
     }
     inputChange = e =>{
         const cred = this.state.chat;
