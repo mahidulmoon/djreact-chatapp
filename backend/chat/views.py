@@ -14,10 +14,6 @@ class MessageViewSet(viewsets.ModelViewSet):
         queryset = Message.objects.filter(sender=request.user,receiver=pk)
         serializer = MessageSerializer(queryset,many=True)
         return Response(serializer.data)
-    # def list(self,request,pk):
-    #     queryset = Message.objects.filter(sender=request.user,receiver=pk)
-    #     serializer = MessageSerializer(queryset,many=True)
-    #     return Response(serializer.data)
         
     
     def create(self,request):
