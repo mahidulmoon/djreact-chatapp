@@ -11,9 +11,13 @@ class MessageViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated,]
 
     def retrieve(self,request,pk):
-        queryset = Message.objects.filter(sender=pk)
+        queryset = Message.objects.filter(sender=request.user,receiver=pk)
         serializer = MessageSerializer(queryset,many=True)
         return Response(serializer.data)
+    # def list(self,request,pk):
+    #     queryset = Message.objects.filter(sender=request.user,receiver=pk)
+    #     serializer = MessageSerializer(queryset,many=True)
+    #     return Response(serializer.data)
         
     
     def create(self,request):
@@ -21,4 +25,5 @@ class MessageViewSet(viewsets.ModelViewSet):
         if serializer.is_valid():
             serializer.save()
             return Response({"message" : "send"})
+    
 
