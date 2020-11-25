@@ -22,4 +22,5 @@ urlpatterns = [
     path('user/',include('user.urls')),
     path('user/logintoken/',TokenObtainPairView.as_view()),
     path('user/logintoken/refresh/',TokenRefreshView.as_view()),
+    path('message/',include('chat.urls')),
 ]

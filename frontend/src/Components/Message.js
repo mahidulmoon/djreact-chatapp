@@ -21,19 +21,20 @@ class Message extends Component {
 
 
                             </div>
-                            <form id="chat-box" className="form-group {% block hide %}hide{% endblock %}" method="post">
+                            <form id="chat-box" className="form-group" >
                                 
                                 <div className="row">
                                     <div className="col s11">
                                         <div className="input-field">
-                                            <input id="id_message" name="message" type="text" placeholder="Type your message.."/>
+                                            <input id="id_message" name="message" type="text" placeholder="Type your message.." />
                                         </div>
                                     </div>
-                                    <div className="col s1" style={{lineHeight: '80vh'}}>
-                                        <button className="btn btn-floating blue lighten-2 waves-effect waves-light"><i className="material-icons">send</i></button>
+                                    <div className="col s1" style={{lineHeight: '80px'}}>
+                                        <button type="button" class="btn btn-primary">Send</button>
                                     </div>
                                 </div>
                             </form>
+          
                             </div>
                         </div>
         );
